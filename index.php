@@ -5,39 +5,37 @@
   <body>
 
 <?php
-class Router {
-  private $routes;
-  public function __construct() {
-  $this->routes = [];
-  }
+define("BASE_URL", '/mvc');
 
-  public function addroute(string $method, string $path, string $controller, string $action) {
-    $this->routes [] = [
-      'method' => $method,
-      'path' => $path,
-      'controller' => $controller,
-      'action' => $action
-    ];
-  }
-  public function ggetHandler(string $method, string $uri) {
-    foreach($this->routes as $route) {
-      if($route['method'] === $method && $route['path'] === $uri) {
-        return [
-          'method' => $route['method'],
-          'controller' => $route['controller'],
-          'action' => $route['action'],
-        ];
-      }
-    }
-    return null;
-  }
+require_once "models/Router.php";
+require_once "models/User.php";
+require_once "controllers/HomeController.php";
+require_once "controllers/ProfileController.php";
+require_once "controllers/LogoutController.php";
+
+$router = new Router();
+
+$router->addRoute('GET', BASE_URL. '/', 'HomeController', 'index');
+$router->addRoute('POST', BASE_URL. '/profile', 'ProfileController', 'index');
+$router->addRoute('GET', BASE_URL. '/logout', 'LogutController', 'index');
+
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
+$handler = $router-> gethandler($method, $uri);
+
+if ($handler == null) {
+  header ('HTTP/1.1 404 not found');
+  exit();
 }
+  $controller = new $handler['controller'] ();
+$action = $handler['action'];
+$controller->$action();
 ?>
- Ce code présente la classe "Router", qui est déstinée à la gestion des routes et des requétes HTTP d'une application web. La classe comprend une variable privée et deux méthodes publiques.
-La métohde constructeur, appelée "__construct" est utilisée pour initialiser la variable $routes en tant que "tableau vide . D'un autre coté , la methode "addRoute" permet l'ajout de nouvelles routes à l'objet Route.
-    Cette meéthode prend en entrée quatres paramétres: $method, $path, $controller, et $action. Elle ajoute une nouvelle entrée dans le tableau $routes avec les informations sur la route spécifiée, qui sont stockées dans un tableau associatif avec les clès "method" "path" "controller"  et "action".
-    La méthode "getHandler" est utilisée pour trouver la route corerspondanteà une demande HTTP entrante.
-    Cette méthode prend duex paramètres : $method et $uri. Elle parfcourt le tableau $routes pour trouver une route qui correspond à la méthode HTTp et a l'uri spécifiés. Si un ecorrespondance est trouvée, la méthode retourne un tableau associatif contenant les informations de la route trouvée(méthode, controleur, action). En cas b'absence de correspondance, elle retourne la valeur null.
+<p>
+  Le code php présenté ci-dessus suit une logique pour gérer les routes et kles demandes HTTP entrantes dans une application web.Il commence par définir une constante BASE_URL, qui sera utilisée comme URL de base pour l'pplication. Ensuite , les fichiers nécessiares sont inclus grace à la fonction require_once.
+   Une fois les fichiers inclus, l'objet Router est instancié pour gérer les routes .Plusieurs routes sont ensuite définies avec la methode "addRoute() de la classe Router", chacune associée à une méthode HTTP, un chemin d'URL spécifique et un nom de controller.
+  Lorsqu'une demande HTTP est recue, le code récupère la méthode de l'URI de la requete à l'aide des superglobales $_SERVER. La méthode getHandler de l'objet Router est appelée pour détérminer quelle route doit etre utilisée pour traiter lza demande . Si aucune correspondante n'est trouvée, une réponse 404 vest renvoyée. Enfin, le controlleur approprié est instancié pour la route trouvée et la méthode d'action associée est appelée pour traiter la demande.
+</p>
   
   </body>
 </html>
