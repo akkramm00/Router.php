@@ -59,6 +59,10 @@ class ProfileController {
     }
   }
 }
+  
 ?>
+<p>
+  Ce code implémente une classe appelée ProfileController avec une méthode publique nommée "index" . Si lz méthode  HTTP de la requete entrante est POST, la méthode index inclut le fichier de la vue "prifile.php" , située dans le repertoire "views".
+</p>
   </body>
 </html>
