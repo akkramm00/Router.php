@@ -67,5 +67,18 @@ class ProfileController {
 </p>
 
     <h3>LogoutController</h3>
+
+<?php
+
+class LogoutController {
+  public function index() {
+    header('location:' ; BASE_URL);
+  }
+}
+?>
+ <p>
+   Le code ci-dessus définit le controller LogoutController qui comporte une méthode publique nommée "index". Cette méthode a pour role de rediriger l'utilisateur vers la page d'accueil de l'application. Elle utilise la fonction header pour effectuer cette redirecvtion en passant comme paramètre l'URL de base auparavant dans la constante BASE_URL. 
+   
+ </p>
   </body>
 </html>
