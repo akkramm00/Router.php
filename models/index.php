@@ -78,7 +78,15 @@ class LogoutController {
 ?>
  <p>
    Le code ci-dessus définit le controller LogoutController qui comporte une méthode publique nommée "index". Cette méthode a pour role de rediriger l'utilisateur vers la page d'accueil de l'application. Elle utilise la fonction header pour effectuer cette redirecvtion en passant comme paramètre l'URL de base auparavant dans la constante BASE_URL. 
-   
  </p>
+
+ <h3>.htaccess</h3>
+    RewriteEngine On
+
+    RewriteRule^([a-zA-Z0-9\-\_\]*)$index.php
+     Cette expression que nous avans vue dans la vidéo concerne la confoguration du serveur Apache utiliosant le modile mod_rewrite. Elle permet de réécrire les URL en utilisant des regles définies dans un fichier.htaccess situé à al racine du site  web. La première ligne "RewriteEngine On" active le module de réécriture , tandis que la seconde ligne "RewriteRule ..." définie une régle de réécriture.
+
+    Cette regle s'applique aux URl qui respectent un certain modèle spécifique entre les parenthèses. 
+    Lorsqu'une règle corrspond à un modèle, elle est réécrite en appelant le fichier index.php situé à la racine du site web. Le fichier index.php est alors chargé et peut exécuter le code PHP nécessaire pour traiter le requêteet renvoyer une réponse . Cette configuration est particulièrement utile, car elle permet de router les requêtes vers les controllers appropriés en fonction de l'URL demandée. EN somme, cette configuration facilite la navigation sur un site web en réécrivant le sURL  de manière transparent pour l'utilisateur. 
   </body>
 </html>
