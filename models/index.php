@@ -36,6 +36,29 @@ $controller->$action();
    Une fois les fichiers inclus, l'objet Router est instancié pour gérer les routes .Plusieurs routes sont ensuite définies avec la methode "addRoute() de la classe Router", chacune associée à une méthode HTTP, un chemin d'URL spécifique et un nom de controller.
   Lorsqu'une demande HTTP est recue, le code récupère la méthode de l'URI de la requete à l'aide des superglobales $_SERVER. La méthode getHandler de l'objet Router est appelée pour détérminer quelle route doit etre utilisée pour traiter lza demande . Si aucune correspondante n'est trouvée, une réponse 404 vest renvoyée. Enfin, le controlleur approprié est instancié pour la route trouvée et la méthode d'action associée est appelée pour traiter la demande.
 </p>
-  
+    
+<?php
+
+class HomeController {
+  public function {
+    require_once 'views/form.php '
+  }
+}
+?>
+ <p>
+   Le controlleur HomeController est défini dans ce code et contient une méthode publique nommée "index" qui apour but d'inclure le fichier de vue "form.php" situé dans le repertoire "views"
+ </p> 
+
+<?php
+
+require_once 'models/User.php';
+class ProfileController {
+  public function index() {
+    if($_SERVER['REQUEST_METHOD'] === "POST") {
+      require_once 'views/profile.php';
+    }
+  }
+}
+?>
   </body>
 </html>
