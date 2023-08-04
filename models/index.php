@@ -88,5 +88,30 @@ class LogoutController {
 
     Cette regle s'applique aux URl qui respectent un certain modèle spécifique entre les parenthèses. 
     Lorsqu'une règle corrspond à un modèle, elle est réécrite en appelant le fichier index.php situé à la racine du site web. Le fichier index.php est alors chargé et peut exécuter le code PHP nécessaire pour traiter le requêteet renvoyer une réponse . Cette configuration est particulièrement utile, car elle permet de router les requêtes vers les controllers appropriés en fonction de l'URL demandée. EN somme, cette configuration facilite la navigation sur un site web en réécrivant le sURL  de manière transparent pour l'utilisateur. 
+
+     <h3>Voici, un exemple de définition de notre class User :</h3>
+
+<?php
+
+class User {
+  private $email;
+  public function __construct(string $email) {
+   $this->mail = $email; 
+  }
+
+  public function getEmail() : string {
+    return $this->email;
+  }
+  public function setEmail(string $email) {
+    $this -> email = $email;
+  }
+
+  public function getmessage() : string {
+    return "Bonjour" . $this->email. ", bienvenue sur notre site"
+      }
+}
+?>
+
+    Le constructeur prend une addresse email en paramètre et l'assigne à la propriété de l'instabce de la classe . Les méthodes getEmailet setEmail permettent respectivement de récupérer et de définir la propiété email. Enfin, la classe a une méthode  public getMessage qui renvoie une chaine de caractères contenant un message de bienvenue personnalisé pour l'adresse email stockée dans la propriété email. Cette classe peut etre utilisée pour représenter un utilisateur d'un site web et stocker son addressse email. La méthode getMessage peut etre utilisée pour renvoyer un message de bikenvenue personnalisée à l'utilisateur lorsqu'il s'inscrit sur le site.
   </body>
 </html>
