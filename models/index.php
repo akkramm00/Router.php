@@ -3,7 +3,7 @@
     <title>PHP Test</title>
   </head>
   <body>
-
+ <h3>Indx.php</h3
 <?php
 define("BASE_URL", '/mvc');
 
@@ -36,7 +36,7 @@ $controller->$action();
    Une fois les fichiers inclus, l'objet Router est instancié pour gérer les routes .Plusieurs routes sont ensuite définies avec la methode "addRoute() de la classe Router", chacune associée à une méthode HTTP, un chemin d'URL spécifique et un nom de controller.
   Lorsqu'une demande HTTP est recue, le code récupère la méthode de l'URI de la requete à l'aide des superglobales $_SERVER. La méthode getHandler de l'objet Router est appelée pour détérminer quelle route doit etre utilisée pour traiter lza demande . Si aucune correspondante n'est trouvée, une réponse 404 vest renvoyée. Enfin, le controlleur approprié est instancié pour la route trouvée et la méthode d'action associée est appelée pour traiter la demande.
 </p>
-    
+     <h3>les controlleurs</h3
 <?php
 
 class HomeController {
@@ -49,6 +49,7 @@ class HomeController {
    Le controlleur HomeController est défini dans ce code et contient une méthode publique nommée "index" qui apour but d'inclure le fichier de vue "form.php" situé dans le repertoire "views"
  </p> 
 
+     <h3>ProfileController</h3
 <?php
 
 require_once 'models/User.php';
@@ -64,5 +65,7 @@ class ProfileController {
 <p>
   Ce code implémente une classe appelée ProfileController avec une méthode publique nommée "index" . Si lz méthode  HTTP de la requete entrante est POST, la méthode index inclut le fichier de la vue "prifile.php" , située dans le repertoire "views".
 </p>
+
+    <h3>LogoutController</h3>
   </body>
 </html>
